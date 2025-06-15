@@ -12,9 +12,9 @@ spring:
   profiles:
     include: null
   datasource:
-    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/nequi_franchises_hub_db?allowPublicKeyRetrieval=true&useSSL=false}
-    username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:N3qu1.@1234}
+    url: "${MYSQL_URL:jdbc:mysql://localhost:3306/nequi_franchises_hub_db?allowPublicKeyRetrieval=true&useSSL=false}"
+    username: "${MYSQL_USERNAME:root}"
+    password: "${MYSQL_PASSWORD:N3qu1.@1234}"
     driverClassName: "com.mysql.cj.jdbc.Driver"
   jpa:
     databasePlatform: "org.hibernate.dialect.MySQLDialect"
