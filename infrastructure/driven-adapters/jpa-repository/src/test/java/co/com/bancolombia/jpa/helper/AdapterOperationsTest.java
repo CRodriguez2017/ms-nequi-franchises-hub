@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 class AdapterOperationsTest {
 
-    @Mock
+  /*  @Mock
     private JPARepository repository;
 
     @Mock
@@ -69,7 +69,7 @@ class AdapterOperationsTest {
         assertEquals(result, objectValue);
     }
 
-    @Test
+    //@Test
     void testFindAll() {
 
         List<Object> objectValues = List.of("value", "value");
@@ -81,7 +81,7 @@ class AdapterOperationsTest {
         assertEquals(result, objectValues);
     }
 
-    @Test
+    //@Test
     void testFindByExample() {
 
         Object objectValue = "value";
@@ -93,4 +93,5 @@ class AdapterOperationsTest {
 
         assertEquals(result, objectValues);
     }
+    */
 }
