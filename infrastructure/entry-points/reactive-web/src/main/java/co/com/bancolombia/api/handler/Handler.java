@@ -1,4 +1,4 @@
-package co.com.bancolombia.api;
+package co.com.bancolombia.api.handler;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

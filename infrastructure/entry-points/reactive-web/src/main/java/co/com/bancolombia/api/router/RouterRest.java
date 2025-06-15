@@ -1,5 +1,6 @@
-package co.com.bancolombia.api;
+package co.com.bancolombia.api.router;
 
+import co.com.bancolombia.api.handler.Handler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -13,8 +14,8 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouterRest {
     @Bean
     public RouterFunction<ServerResponse> routerFunction(Handler handler) {
-        return route(GET("/api/usecase/path"), handler::listenGETUseCase)
-                .andRoute(POST("/api/usecase/otherpath"), handler::listenPOSTUseCase)
-                .and(route(GET("/api/otherusercase/path"), handler::listenGETOtherUseCase));
+        return route(GET("/api/v1/usecase/path"), handler::listenGETUseCase)
+                .andRoute(POST("/api/v1/usecase/otherpath"), handler::listenPOSTUseCase)
+                .and(route(GET("/api/v1/otherusercase/path"), handler::listenGETOtherUseCase));
     }
 }
