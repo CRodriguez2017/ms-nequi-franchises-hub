@@ -1,6 +1,5 @@
 package co.com.bancolombia.api.handler;
 
-import co.com.bancolombia.api.dto.Branch.CreateBranchRequest;
 import co.com.bancolombia.api.dto.Product.ProductRequest;
 import co.com.bancolombia.model.product.Product;
 import co.com.bancolombia.model.product.dto.UpdateProduct;

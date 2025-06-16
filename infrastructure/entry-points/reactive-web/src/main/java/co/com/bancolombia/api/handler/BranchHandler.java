@@ -1,6 +1,7 @@
 package co.com.bancolombia.api.handler;
 
 import co.com.bancolombia.api.dto.Branch.BranchRequest;
+import co.com.bancolombia.api.dto.Franchise.FranchiseRequest;
 import co.com.bancolombia.model.branch.Branch;
 import co.com.bancolombia.usecase.branchmanagement.BranchManagementUseCase;
 import jakarta.validation.Validator;
@@ -40,8 +41,8 @@ public class BranchHandler {
     public Mono<ServerResponse> updateBranch(ServerRequest serverRequest) {
         Integer franchiseId = validateRequiredParam(FRANCHISE_ID.getName(), serverRequest.pathVariable(FRANCHISE_ID.getName()));
         Integer branchId = validateRequiredParam(BRANCH_ID.getName(), serverRequest.pathVariable(BRANCH_ID.getName()));
-        return validateBody(serverRequest.bodyToMono(UpdateFranchiseRequest.class), validator)
-                .map(UpdateFranchiseRequest::getName)
+        return validateBody(serverRequest.bodyToMono(FranchiseRequest.class), validator)
+                .map(FranchiseRequest::getName)
                 .flatMap(branchName -> branchManagementUseCase.updateBranch(franchiseId, branchId, branchName))
                 .flatMap(branch -> ServerResponse.ok().bodyValue(branch));
     }

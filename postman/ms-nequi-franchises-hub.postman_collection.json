@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "e0f6fb3a-abd9-43b1-a910-58c7cb627f97",
+		"name": "ms-nequi-franchises-hub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8571635"
+	},
+	"item": [
+		{
+			"name": "Franquicias",
+			"item": [
+				{
+					"name": "createFranchise",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pollo Frisby S.A.S\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllFranchises",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateFranchise",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"MI PRUEBA's Pizza update si es segundo SI ES\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sucursales",
+			"item": [
+				{
+					"name": "createBranch",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Sede Principal - Jardin Plaza\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}/branches",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}",
+								"branches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllBranches",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}/branches",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}",
+								"branches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBranch",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Sede Principal - Jardin Plaza (UPDATE)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}/branches/{{branchId}}",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}",
+								"branches",
+								"{{branchId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "createProduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Pollo Entero BBQ\",\n  \"stock\": 300\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}/branches/{{branchId}}/products",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}",
+								"branches",
+								"{{branchId}}",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductsBySite",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}/branches/{{branchId}}/products",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}",
+								"branches",
+								"{{branchId}}",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTopProductsByBrandId",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}/top-products",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}",
+								"top-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"actualiza si\",\n  \"stock\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}/branches/{{branchId}}/products/{{productId}}",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}",
+								"branches",
+								"{{branchId}}",
+								"products",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{basePath}}/api/{{version}}/franchises/{{franchiseId}}/branches/{{branchId}}/products/{{productId}}",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"franchises",
+								"{{franchiseId}}",
+								"branches",
+								"{{branchId}}",
+								"products",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "HOSTNAME",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
