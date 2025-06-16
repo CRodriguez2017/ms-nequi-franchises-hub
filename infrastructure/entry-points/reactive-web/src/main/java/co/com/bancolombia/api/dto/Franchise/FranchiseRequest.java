@@ -8,8 +8,8 @@ import jakarta.validation.constraints.NotBlank;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateFranchiseRequest {
+public class FranchiseRequest {
 
-    @NotBlank(message = "El nombre de la franquicia es obligatorio")
+    @NotBlank(message = "El nombre de la franquicia es requerido")
     private String name;
 }

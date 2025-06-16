@@ -1,12 +1,9 @@
 package co.com.bancolombia.api.handler;
 
 import co.com.bancolombia.api.dto.Branch.CreateBranchRequest;
-import co.com.bancolombia.api.dto.Franchise.UpdateFranchiseRequest;
 import co.com.bancolombia.api.dto.Product.ProductRequest;
-import co.com.bancolombia.model.branch.Branch;
 import co.com.bancolombia.model.product.Product;
 import co.com.bancolombia.model.product.dto.UpdateProduct;
-import co.com.bancolombia.usecase.branchmanagement.BranchManagementUseCase;
 import co.com.bancolombia.usecase.productmanagement.ProductManagementUseCase;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;

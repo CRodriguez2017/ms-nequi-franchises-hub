@@ -1,12 +1,8 @@
 package co.com.bancolombia.api.handler;
 
-import co.com.bancolombia.api.dto.Branch.CreateBranchRequest;
-import co.com.bancolombia.api.dto.Franchise.CreateFranchiseRequest;
-import co.com.bancolombia.api.dto.Franchise.UpdateFranchiseRequest;
+import co.com.bancolombia.api.dto.Branch.BranchRequest;
 import co.com.bancolombia.model.branch.Branch;
-import co.com.bancolombia.model.franchise.Franchise;
 import co.com.bancolombia.usecase.branchmanagement.BranchManagementUseCase;
-import co.com.bancolombia.usecase.franchisemanagement.FranchiseManagementUseCase;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -35,8 +31,8 @@ public class BranchHandler {
 
     public Mono<ServerResponse> createBranch(ServerRequest serverRequest) {
         Integer franchiseId = validateRequiredParam(FRANCHISE_ID.getName(), serverRequest.pathVariable(FRANCHISE_ID.getName()));
-        return validateBody(serverRequest.bodyToMono(CreateBranchRequest.class), validator)
-                .map(CreateBranchRequest::getName)
+        return validateBody(serverRequest.bodyToMono(BranchRequest.class), validator)
+                .map(BranchRequest::getName)
                 .flatMap(branchName -> branchManagementUseCase.createBranch(branchName, franchiseId))
                 .flatMap(branch -> ServerResponse.ok().bodyValue(branch));
     }

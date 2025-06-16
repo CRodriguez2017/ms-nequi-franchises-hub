@@ -1,7 +1,6 @@
 package co.com.bancolombia.model.branch;
 import co.com.bancolombia.model.franchise.Franchise;
 import lombok.*;
-//import lombok.NoArgsConstructor;
 
 
 @Getter

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateBranchRequest {
+public class BranchRequest {
     @NotBlank(message = "El nombre de la sucursal es obligatoria")
     private String name;
 }

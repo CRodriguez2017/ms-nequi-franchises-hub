@@ -11,8 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductRequest {
+
     @NotBlank(message = "El nombre del producto es obligatorio")
     private String name;
+
     @NotNull(message = "El stock del producto es obligatorio")
     @Min(value = 0, message = "El valor debe ser igual o mayor a cero (0)")
     private Integer stock;
