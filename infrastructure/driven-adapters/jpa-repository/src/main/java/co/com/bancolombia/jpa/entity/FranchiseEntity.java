@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @Entity
 @NoArgsConstructor
@@ -18,8 +16,4 @@ public class FranchiseEntity {
 
     @Column(nullable = false)
     private String name;
-
-    //private LocalDateTime created_at;
-
-    //private LocalDateTime updated_at;
 }

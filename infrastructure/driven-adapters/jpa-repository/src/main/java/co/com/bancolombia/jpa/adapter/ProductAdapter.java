@@ -13,8 +13,7 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Repository
-public class ProductAdapter extends AdapterOperations<Product, ProductEntity, Integer, ProductsRepository>
-        implements ProductRepository {
+public class ProductAdapter extends AdapterOperations<Product, ProductEntity, Integer, ProductsRepository> implements ProductRepository {
 
     public ProductAdapter(ProductsRepository repository, ObjectMapper mapper) {
         super(repository, mapper, d -> mapper.map(d, Product.class));
@@ -40,9 +39,8 @@ public class ProductAdapter extends AdapterOperations<Product, ProductEntity, In
     }
 
     @Override
-    public Flux<Product> getProductsByBranchId(Integer siteId) {
-        return Flux.fromIterable(repository.findProductsByBranchId(siteId))
-                .map(this::toEntity);
+    public Flux<Product> getProductsByBranchId(Integer branchId) {
+        return Flux.fromIterable(repository.findProductsByBranchId(branchId)).map(this::toEntity);
     }
 
 }

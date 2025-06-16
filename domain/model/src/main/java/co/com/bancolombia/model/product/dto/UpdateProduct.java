@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateProduct {
-    private Integer brandId;
-    private Integer siteId;
+    private Integer franchiseId;
+    private Integer branchId;
     private Integer productId;
     private String name;
     private Integer stock;

@@ -10,8 +10,6 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Comparator;
-
 @RequiredArgsConstructor
 public class ProductManagementUseCase {
 
@@ -28,27 +26,21 @@ public class ProductManagementUseCase {
                 .flatMap(productRepository::createProduct);
     }
 
-    public Mono<Product> updateProduct(UpdateProduct command) {
-        return getProductById(command.getProductId())
-                .flatMap(product ->  checkIfProductBelongToSite(
-                        product, command.getBrandId(), command.getSiteId()))
+    public Mono<Product> updateProduct(UpdateProduct updateProduct) {
+        return getProductById(updateProduct.getProductId())
+                .flatMap(product -> validateProductBelongsToBranch(product, updateProduct.getFranchiseId(), updateProduct.getBranchId())
+                        .thenReturn(product)) // ← importante, retornamos el mismo producto si pasa la validación
                 .map(product -> product.toBuilder()
-                        .name(command.getName())
-                        .stock(command.getStock())
+                        .name(updateProduct.getName())
+                        .stock(updateProduct.getStock())
                         .build())
                 .flatMap(productRepository::updateProduct);
     }
 
-    public Mono<Void> deleteProduct(Integer brandId, Integer siteId, Integer productId) {
+    public Mono<Void> deleteProduct(Integer franchiseId, Integer branchId, Integer productId) {
         return getProductById(productId)
-                .flatMap(product -> this.checkIfProductBelongToSite(product, brandId, siteId))
-                .flatMap(product -> productRepository.deleteProduct(productId));
-    }
-
-    public Flux<Product> getTopProductsByFranchiseId(Integer franchiseId) {
-        return branchManagementUseCase.getBranchesByFranchiseId(franchiseId)
-                .flatMap(branch -> getTopProductByBranchId(franchiseId, branch.getId()))
-                .switchIfEmpty(Mono.error(new NotFoundException("No se encontraron productos")));
+                .flatMap(product -> validateProductBelongsToBranch(product, franchiseId, branchId)
+                        .then(productRepository.deleteProduct(productId)));
     }
 
     public Flux<Product> getProductsByFranchiseIdAndBranchId(Integer franchiseId, Integer branchId) {
@@ -56,22 +48,33 @@ public class ProductManagementUseCase {
                 .filter(product -> franchiseId.equals(product.getBranch().getFranchise().getId()));
     }
 
+    public Flux<Product> getTopProductsByFranchiseId(Integer franchiseId) {
+        return branchManagementUseCase.getBranchesByFranchiseId(franchiseId)
+                .flatMap(branch -> getTopProductByBranchId(franchiseId, branch.getId()))
+                .collectList()
+                .flatMapMany(products -> {
+                    if (products.isEmpty()) {
+                        return Flux.error(new NotFoundException("No se encontraron productos"));
+                    }
+                    return Flux.fromIterable(products);
+                });
+    }
+
     private Mono<Product> getProductById(Integer productId) {
         return productRepository.getProductById(productId)
                 .switchIfEmpty(Mono.error(new NotFoundException("No se encontro el producto")));
     }
 
-    private Mono<Product> checkIfProductBelongToSite(Product product, Integer franchiseId, Integer branchId) {
-        return Mono.just(product)
-                .filter(p -> branchId.equals(p.getBranch().getId()))
-                .filter(p -> franchiseId.equals(p.getBranch().getFranchise().getId()))
-                .switchIfEmpty(Mono.error(new BadRequestException("No existe en la sucursal")));
+
+    private Mono<Product> getTopProductByBranchId(Integer franchiseId, Integer branchId) {
+        return getProductsByFranchiseIdAndBranchId(franchiseId, branchId)
+                .reduce((p1, p2) -> p1.getStock() >= p2.getStock() ? p1 : p2);
     }
 
-    private Mono<Product> getTopProductByBranchId(Integer franchiseId, Integer siteId) {
-        return getProductsByFranchiseIdAndBranchId(franchiseId, siteId)
-                .collectSortedList(Comparator.comparingInt(Product::getStock).reversed())
-                .filter(products -> !products.isEmpty())
-                .map(products -> products.get(0));
+    private Mono<Void> validateProductBelongsToBranch(Product product, Integer franchiseId, Integer branchId) {
+        boolean isValid = branchId.equals(product.getBranch().getId()) &&
+                franchiseId.equals(product.getBranch().getFranchise().getId());
+        return isValid ? Mono.empty() : Mono.error(new BadRequestException("No existe en la sucursal"));
     }
+
 }

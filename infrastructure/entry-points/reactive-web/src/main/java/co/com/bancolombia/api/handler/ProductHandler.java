@@ -43,8 +43,8 @@ public class ProductHandler {
         return validateBody(serverRequest.bodyToMono(ProductRequest.class), validator)
                 .flatMap(updateProductRequest -> productManagementUseCase.updateProduct(
                         UpdateProduct.builder()
-                                .brandId(franchiseId)
-                                .siteId(branchId)
+                                .franchiseId(franchiseId)
+                                .branchId(branchId)
                                 .productId(productId)
                                 .name(updateProductRequest.getName())
                                 .stock(updateProductRequest.getStock())

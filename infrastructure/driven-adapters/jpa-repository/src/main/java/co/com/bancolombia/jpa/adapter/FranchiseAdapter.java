@@ -36,8 +36,6 @@ public class FranchiseAdapter extends AdapterOperations<Franchise, FranchiseEnti
         return Mono.defer(() -> Mono.just(
                 save(Franchise.builder()
                         .name(name)
-                        //.created_at(null)
-                        //.updated_at(null)
                         .build())
         ));
     }

@@ -13,16 +13,15 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Repository
-public class BranchAdapter extends AdapterOperations<Branch, BranchEntity, Integer, BranchesRepository>
-        implements BranchRepository {
+public class BranchAdapter extends AdapterOperations<Branch, BranchEntity, Integer, BranchesRepository> implements BranchRepository {
 
     public BranchAdapter(BranchesRepository repository, ObjectMapper mapper) {
         super(repository, mapper, d -> mapper.map(d, Branch.class));
     }
 
     @Override
-    public Mono<Branch> createBranch(Branch site) {
-        return Mono.defer(() -> Mono.just(save(site)));
+    public Mono<Branch> createBranch(Branch branch) {
+        return Mono.defer(() -> Mono.just(save(branch)));
     }
 
     @Override
@@ -37,8 +36,7 @@ public class BranchAdapter extends AdapterOperations<Branch, BranchEntity, Integ
 
     @Override
     public Flux<Branch> getBranchByFranchiseId(Integer franchiseId) {
-        return Flux.fromIterable(repository.findBranchesByFranchiseId(franchiseId))
-                .map(this::toEntity);
+        return Flux.fromIterable(repository.findBranchesByFranchiseId(franchiseId)).map(this::toEntity);
     }
 
 }
