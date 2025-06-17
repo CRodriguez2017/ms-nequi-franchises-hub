@@ -175,7 +175,7 @@ docker run -d --name ms-nequi-franchises-hub-test \
 ```
 ---
 
-### ✅ PASO 6(Opcional): Descargar imagen de DockerHub y compilar el proyecto
+### ✅ PASO 7(Opcional): Descargar imagen de DockerHub y compilar el proyecto
 
 El siguiente comando ejecuta las pruebas unitarias:
 ```bash
