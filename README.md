@@ -93,8 +93,8 @@ Una vez el contenedor esté corriendo, correr el comando ubicandose sobre la rai
 
 ```bash
 
-docker exec -i mysql-nequi \
-mysql -u root -pmy-secret-pw < ./nequi_franchises_hub_db.sql
+docker exec -i nequi-franchises-hub-rds \
+mysql -u root -pN3qu1.@1234 < ./nequi_franchises_hub_db.sql
 ```
 
 Otra opción es abrir el archivo nequi_franchises_hub_db.sql y ejecutarlo directamente en un IDE que permita establecer conexión a la base datos sobre la instancia que se creo en el docker.  
