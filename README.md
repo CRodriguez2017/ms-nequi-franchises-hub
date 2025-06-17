@@ -172,5 +172,5 @@ En este caso son:
 
 ## ©️ Propuesta desarrollada por:
 
-Ing. Christian David Rodriguez: Mis palabras de agradecimiento por diseñar una prueba que fuera
+Ing. Christian David Rodriguez Gonzalez: Mis palabras de agradecimiento por diseñar una prueba que fuera
 interesante y atractiva, termino esta prueba con animo moral muy importante para continuar el proceso.
