@@ -134,6 +134,56 @@ El servicio esta expuesto por defecto en el puerto `8080`. Si lo cambian no olvi
 
 ---
 
+
+### ✅ PASO 5(Opcional): Generar imagen docker y compilar el proyecto
+
+El siguiente comando genera la imagen docker. 
+```bash
+
+docker build -f deployment/Dockerfile -t ms-nequi-franchises-hub .
+```
+El siguiente comando corre la imagen docker.
+```bash
+
+docker run -d --name ms-nequi-franchises-hub \
+  -p 8080:8080 \
+  -e SERVER_PORT=8080 \
+  -e MYSQL_URL='jdbc:mysql://host.docker.internal:3306/nequi_franchises_hub_db?allowPublicKeyRetrieval=true&useSSL=false' \
+  -e MYSQL_USERNAME='root' \
+  -e MYSQL_PASSWORD='N3qu1.@1234' \
+  ms-nequi-franchises-hub
+```
+---
+
+### ✅ PASO 6(Opcional): Descargar imagen de DockerHub y compilar el proyecto
+
+El siguiente comando descarga la imagen docker desde: https://hub.docker.com/r/crodriguez2017/ms-nequi-franchises-hub.
+```bash
+
+docker docker pull crodriguez2017/ms-nequi-franchises-hub
+```
+El siguiente comando corre la imagen docker.
+```bash
+
+docker run -d --name ms-nequi-franchises-hub-test \
+  -p 8080:8080 \
+  -e SERVER_PORT=8080 \
+  -e MYSQL_URL='jdbc:mysql://host.docker.internal:3306/nequi_franchises_hub_db?allowPublicKeyRetrieval=true&useSSL=false' \
+  -e MYSQL_USERNAME='root' \
+  -e MYSQL_PASSWORD='N3qu1.@1234' \
+  crodriguez2017/ms-nequi-franchises-hub
+```
+---
+
+### ✅ PASO 6(Opcional): Descargar imagen de DockerHub y compilar el proyecto
+
+El siguiente comando ejecuta las pruebas unitarias:
+```bash
+
+./gradlew test
+```
+---
+
 ## 🧪 Pruebas usando POSTMAN
 
 Se crearon las colecciones de Postman para que sean importadas en el IDE de Postman, se encuentran en la carpeta /postman sobre la raiz del proyecto. 
