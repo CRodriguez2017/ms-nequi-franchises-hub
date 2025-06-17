@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e0f6fb3a-abd9-43b1-a910-58c7cb627f97",
+		"_postman_id": "e16d9415-6524-4c55-b945-3f3e7859aa1f",
 		"name": "ms-nequi-franchises-hub",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8571635"
@@ -249,7 +249,7 @@
 					"response": []
 				},
 				{
-					"name": "getProductsBySite",
+					"name": "getProductsByBranch",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -281,7 +281,7 @@
 					"response": []
 				},
 				{
-					"name": "getTopProductsByBrandId",
+					"name": "getTopProductsByFranchiseId",
 					"request": {
 						"auth": {
 							"type": "noauth"
