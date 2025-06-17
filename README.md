@@ -55,10 +55,16 @@ Este módulo es el más externo de la arquitectura, es el encargado de ensamblar
 
 **Los beans de los casos de uso se disponibilizan automaticamente gracias a un '@ComponentScan' ubicado en esta capa.**
 
+## 📝 REQUISITOS PREVIOS
 
-## 🚀 ¿Cómo ejecutar el proyecto localmente?
+### 🎯 Gradle 8.14.2 
+### 🎯 Java JDK 21
+### 🎯 Docker Desktop 4.41.2
 
-### 1. Clona el repositorio
+
+## 💯 Pasos para ejecutar el proyecto localmente
+
+### ✅ PASO 1: Clona el repositorio
 
 ```bash
 
@@ -66,7 +72,7 @@ git clone https://github.com/CRodriguez2017/ms-nequi-franchises-hub.git
 cd ms-nequi-franchises-hub
 ```
 
-### 2. Crea y levanta la base de datos con Docker
+### ✅ PASO 2: Crea y levanta la base de datos con Docker
 
 Asegúrate de tener Docker instalado. <br>
 Luego ejecuta el siguiente comando para iniciar un contenedor de MySQL:
@@ -94,7 +100,7 @@ mysql -u root -pmy-secret-pw < ./nequi_franchises_hub_db.sql
 Otra opción es abrir el archivo nequi_franchises_hub_db.sql y ejecutarlo directamente en un IDE que permita establecer conexión a la base datos sobre la instancia que se creo en el docker.  
 ---
 
-### 3. Variables de entorno
+### ✅ PASO 3: Variables de entorno
 
 Puedes usar variables en tiempo de ejecución o definir un archivo `.env`. Las propiedades necesarias están en `application.yml` y usan placeholders con valores por defecto:
 
@@ -117,7 +123,7 @@ export MYSQL_PASSWORD=N3qu1.@1234
 
 ---
 
-### 4. Compilar y ejecutar el proyecto localmente
+### ✅ PASO 4: Compilar y ejecutar el proyecto localmente
 
 ```bash
 
@@ -153,6 +159,7 @@ En este caso son:
 
 - Programación Reactiva
 - Java JDK 21
+- Gradle 8.14.2
 - AWS EC2
 - MySql
 - Spring Boot 3 (WebFlux, Data JPA)
